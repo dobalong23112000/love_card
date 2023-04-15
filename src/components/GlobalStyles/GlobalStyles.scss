@@ -13,3 +13,25 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
 }
+
+.text {
+    background-color: rgb(225 143 143);
+    /* Màu đỏ tương đương với #FFABAB */
+    color: transparent;
+    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.23);
+    /* Màu đen với độ trong suốt 25% */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+
+.text-register {
+    background-color: rgb(225 143 143);
+    /* Màu đỏ tương đương với #FFABAB */
+    color: transparent;
+    text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.23);
+    /* Màu đen với độ trong suốt 25% */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}

@@ -1,15 +1,18 @@
 import React from 'react'
 import classNames from 'classnames/bind'
 import styles from './styles.module.scss'
-import { AiOutlineMail } from "react-icons/ai";
 
 const cx = classNames.bind(styles)
 
 const InputCustom = (props) => {
+    let { icon, placeholder } = props;
+
     return (
         <div style={{ position: "relative" }}>
-            <AiOutlineMail style={{ position: "absolute", top: '23px', left: "18px", color: '#FFABAB', fontWeight: 600 }} size={12} />
-            <input className={cx('input')} placeholder="Email" {...props}>
+            <div style={{ position: "absolute", top: '15px', left: "18px", color: '#FFABAB', fontWeight: 600 }}>
+                {icon}
+            </div>
+            <input className={cx('input')} placeholder={placeholder} {...props}>
             </input>
         </div>
 
