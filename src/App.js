@@ -1,20 +1,33 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import InputCustom from 'components/InputCustom';
-import { AiOutlineMail, AiFillPhone, AiFillLock } from "react-icons/ai";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from 'routes';
+import DefaultLayout from 'components/Layouts/DefaultLayout';
+import { Fragment } from 'react';
 function App() {
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center" style={{ width: "342px", height: "496px", backgroundColor: "#ffdddd" }}>
-      <div style={{ fontSize: "30px", lineHeight: "40px", fontWeight: "900", textAlign: "center", marginBottom: "19px" }} className='text'>ĐĂNG NHẬP</div>
+    <Router>
+      <div className='App'>
+        <Routes >
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            let Layout = DefaultLayout;
+            if (route.layout) {
+              Layout = route.layout
+            } else if (route.layout === null) {
+              Layout = Fragment
+            }
+            return <Route key={index} path={route.path} element={
+            <Layout>
+              <Page />
+            </Layout>} 
+            />
+          })}
+        </Routes>
 
-      <div style={{ fontSize: "30px", lineHeight: "40px", fontWeight: "900", textAlign: "center", marginBottom: "19px" }} className='text-register'>ĐĂNG KÝ</div>
-      <InputCustom icon={<AiOutlineMail size={12} />} placeholder='Email' />
-      <div style={{ marginBottom: "41px" }}></div>
-      <InputCustom icon={<AiFillPhone size={12} />} placeholder='Số điện thoại' />
-      <div style={{ marginBottom: "41px" }} ></div>
-      <InputCustom icon={<AiFillLock size={12} />} placeholder='Mật khẩu' />
-
-    </div>
+      </div>
+    </Router>
   );
 }
 

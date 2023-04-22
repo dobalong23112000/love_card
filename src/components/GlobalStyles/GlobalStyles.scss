@@ -14,7 +14,17 @@ body {
     text-rendering: optimizeSpeed;
 }
 
-.text {
+.text-error {
+    color: #DF0707;
+    font-size: 8px;
+    line-height: 11px;
+    font-weight: 600;
+}
+.input-error{
+    border: 1px solid #DF0707 !important;
+
+}
+.text-register {
     background-color: rgb(225 143 143);
     /* Màu đỏ tương đương với #FFABAB */
     color: transparent;
@@ -25,13 +35,301 @@ body {
     background-clip: text;
 }
 
-.text-register {
+
+
+.form-control:focus {
+    color: rgb(225 143 143);
+    background-color: #ffe8e8;
+    border: 0px;
+    outline: 0;
+    box-shadow: 0px -1px 0px 0px white;
+}
+
+.form-control {
+
+    padding-left: 37px;
+    padding-right: 19px;
+    font-weight: 900;
+    outline: none;
+    font-size: 15px;
+    line-height: 20px;
+    box-sizing: border-box;
+    color: rgb(225 143 143);
+    width: 272px;
+    height: 56px;
+    background-color: #ffe8e8;
+    border-radius: 30px;
+    border: 1px solid #fcfcfc;
+    box-shadow: 0px -1px 0px 0px white;
+
+}
+
+.form-control::placeholder {
     background-color: rgb(225 143 143);
-    /* Màu đỏ tương đương với #FFABAB */
     color: transparent;
     text-shadow: 0px 4px 4px rgba(255, 255, 255, 0.23);
-    /* Màu đen với độ trong suốt 25% */
     -webkit-background-clip: text;
     -moz-background-clip: text;
-    background-clip: text;
+    opacity: 0.6;
+}
+
+
+//Animation 
+.active-text-register {
+    animation: text-register-active 1s ease-in-out;
+    animation-fill-mode: forwards;
+    position: absolute;
+    bottom: 16px;
+
+}
+
+@keyframes text-register-active {
+    from {
+        bottom: 16px;
+    }
+
+    to {
+        bottom: 615px;
+    }
+}
+
+.nonactive-text-register {
+    animation: text-register-nonactive 1s ease-in-out;
+    animation-fill-mode: forwards;
+    position: absolute;
+    bottom: 615px;
+
+}
+
+@keyframes text-register-nonactive {
+    0% {
+        bottom: 615px;
+
+    }
+
+    100% {
+        bottom: 16px;
+
+    }
+}
+
+.active-footer {
+    animation: footer-active 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes footer-active {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+.nonactive-footer {
+    animation: footer-nonactive 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes footer-nonactive {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+
+    }
+}
+
+.active-text-login {
+    position: absolute;
+    animation: text-login-active 1s ease-in-out;
+    animation-fill-mode: forwards;
+    top: 110px;
+    font-size: 20px;
+    line-height: 28px;
+    color: white;
+}
+
+@keyframes text-login-active {
+    from {
+        top: 110px;
+        font-size: 20px;
+        line-height: 28px;
+        color: white;
+    }
+
+    to {
+        top: 220px;
+        font-size: 30px;
+        line-height: 40px;
+        color: rgb(225, 143, 143);
+    }
+}
+
+.nonactive-text-login {
+    top: 220px;
+    font-size: 30px;
+    line-height: 40px;
+    color: rgb(225 143 143);
+    position: absolute;
+    animation: text-login-nonactive 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes text-login-nonactive {
+    from {
+        top: 220px;
+        font-size: 30px;
+        line-height: 40px;
+        color: rgb(225 143 143);
+    }
+
+    to {
+        top: 110px;
+        font-size: 20px;
+        line-height: 28px;
+        color: white;
+    }
+}
+
+
+.active-form-register {
+    width: 342px;
+    height: 496px;
+    background-color: rgb(255, 255, 255, 0.4);
+    box-shadow: 0px -1px 0px 0px white;
+    border-radius: 20px;
+    animation: form-register-active 1s ease-in-out;
+    animation-fill-mode: forwards;
+    position: absolute;
+    top: 215px;
+}
+
+@keyframes form-register-active {
+    from {
+        width: 342px;
+        height: 496px;
+        border-radius: 20px
+    }
+
+    to {
+        top: 232px;
+        width: 428px;
+        height: 802px;
+        border-radius: 100px
+    }
+}
+
+.active-form-login {
+    top: 232px;
+    width: 428px;
+    height: 802px;
+    border-radius: 100px;
+    background-color: rgb(255, 255, 255, 0.4);
+    box-shadow: 0px -1px 0px 0px white;
+    animation: form-login-active 1s ease-in-out;
+    animation-fill-mode: forwards;
+    position: absolute;
+}
+
+@keyframes form-login-active {
+    from {
+        width: 428px;
+        height: 802px;
+        border-radius: 100px;
+
+    }
+
+    to {
+        width: 342px;
+        height: 496px;
+        top: 215px;
+        border-radius: 20px
+    }
+}
+
+.login_background {
+    background-image: url('../../assets/images/background_register.png');
+    animation: active_background_login 1s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation-fill-mode: forwards;
+}
+
+@keyframes active_background_login {
+    0% {
+        background-image: url('../../assets/images/background_register.png');
+        opacity: 1;
+    }
+
+    50% {
+        background-image: url('../../assets/images/background_register.png');
+        opacity: 0.8;
+    }
+
+    100% {
+        background-image: url('../../assets/images/background_login.png');
+        opacity: 1;
+    }
+}
+
+.register_background {
+    background-image: url('../../assets/images/background_login.png');
+    animation: active_background_register 1s ease-in-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation-fill-mode: forwards;
+}
+
+@keyframes active_background_register {
+    0% {
+        background-image: url('../../assets/images/background_login.png');
+        opacity: 1;
+    }
+
+    50% {
+        background-image: url('../../assets/images/background_login.png');
+        opacity: 0.8;
+    }
+
+    100% {
+        background-image: url('../../assets/images/background_register.png');
+        opacity: 1;
+    }
+}
+
+.active-form {
+    animation: form_active 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes form_active {
+    to {
+        opacity: 0;
+    }
+
+    from {
+        opacity: 1;
+    }
+}
+
+.nonactive-form {
+    animation: form_nonactive 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes form_nonactive {
+    to {
+        opacity: 1;
+    }
+
+    from {
+        opacity: 0;
+    }
 }

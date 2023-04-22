@@ -1,0 +1,71 @@
+.form_group {
+    margin-bottom: 33px !important;
+    position: relative;
+}
+
+.wrapper {
+    width: 100vw;
+    min-height: 926px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper_form {
+    width: 342px;
+    height: 496px;
+    background-color: rgb(255, 255, 255, 0.4);
+    box-shadow: 0px -1px 0px 0px white;
+    border-radius: 20px
+}
+
+.button_submit {
+    width: 129px;
+    height: 56px;
+    border-radius: 45px;
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: 900;
+    color: white;
+    padding-left: 18px;
+    padding-right: 18px;
+    background-image: linear-gradient(to bottom, white, #FFABAB);
+    box-shadow: 0px -1px 0px 0px white;
+
+    border: 0px;
+}
+
+.footer-register {
+    position: absolute;
+    bottom: -135px;
+    width: 428px;
+    height: 209px;
+    border: 1px solid white;
+    border-radius: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: center
+}
+
+.login-text {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 19px;
+    color: rgb(225 143 143);
+
+}
+
+.register-text {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 900;
+    text-align: center;
+    color: rgb(225 143 143);
+}
