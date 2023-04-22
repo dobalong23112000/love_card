@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames/bind'
 import style from './style.module.scss'
-import { IoMusicalNotesOutline,IoSettingsOutline ,IoHeartOutline} from "react-icons/io5";
+import { IoMusicalNotesOutline, IoSettingsOutline, IoHeartOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 const cx = classNames.bind(style)
 const Footer = () => {
-    
+    const navigation = useNavigate();
+    const [activeItem, setActiveItem] = useState(1);
     return (
         <div className={cx('footer')}>
             <div className={cx('wrapper')}>
-                <div className={cx('active-item')}>
+                <div className={activeItem === 1 ? cx('active-item') : ''} onClick={() => {
+                    navigation('/')
+                    setActiveItem(1)
+                }}>
                     <IoHeartOutline size={36} color='#BE6E6E' />
                 </div>
-                <div >
-                    <IoSettingsOutline size={36} color='#BE6E6E'/>
+                <div className={activeItem === 2 ? cx('active-item') : ''} onClick={() => {
+                    navigation('/config')
+                    setActiveItem(2)
+
+                }}>
+                    <IoSettingsOutline size={36} color='#BE6E6E' />
                 </div>
-                <div>
-                    <IoMusicalNotesOutline size={36} color='#BE6E6E'/>
+                <div className={activeItem === 3 ? cx('active-item') : ''} onClick={() => {
+                    navigation('/music')
+                    setActiveItem(3)
+
+                }}>
+                    <IoMusicalNotesOutline size={36} color='#BE6E6E' />
                 </div>
             </div>
         </div>

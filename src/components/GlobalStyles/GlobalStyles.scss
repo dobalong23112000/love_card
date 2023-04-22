@@ -14,16 +14,41 @@ body {
     text-rendering: optimizeSpeed;
 }
 
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 168px;
+    flex-direction: column;
+}
+
+.content {
+    min-height: 592px;
+    width: 367px;
+    background-blend-mode: overlay;
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 20px;
+}
+
+.icon_save {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+}
+
 .text-error {
     color: #DF0707;
     font-size: 8px;
     line-height: 11px;
     font-weight: 600;
 }
-.input-error{
+
+.input-error {
     border: 1px solid #DF0707 !important;
 
 }
+
 .text-register {
     background-color: rgb(225 143 143);
     /* Màu đỏ tương đương với #FFABAB */
@@ -35,7 +60,15 @@ body {
     background-clip: text;
 }
 
+.text-header {
+    position: absolute;
+    top: 120px;
+    font-size: 20px;
+    line-height: 28px;
+    color: white;
+    font-weight: 900;
 
+}
 
 .form-control:focus {
     color: rgb(225 143 143);
