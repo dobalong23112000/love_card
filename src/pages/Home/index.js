@@ -44,7 +44,7 @@ const Home = () => {
 
           <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>
             <div className={cx('name', 'w-50 ps-3 pe-3')}>
-              Sơn Tùng MMMMMMMMMMMMMMMMMMMMMMMMMTP
+              Sơn Tùng M-TP
             </div>
             <div className={cx('name', 'w-50 ps-3 pe-3')}>
               Hải Tú
@@ -63,7 +63,6 @@ const Home = () => {
           <div className={cx('d-flex w-100 justify-content-evenly')}>
             <div className={cx('description_user', 'w-50 ps-3 pe-3')}>
               Hoàng Dương yêu Thảo Anh nhất trên cuộc đời này, không ai có thể thay thể được
-              Hoàng Dương yêu Thảo Anh nhất trên cuộc đời  Hoàng Dương yêu Thảo Anh nhất trên cuộc đời  Hoàng Dương yêu Thảo Anh nhất trên cuộc đời  Hoàng Dương yêu Thảo Anh nhất trên cuộc đời
             </div>
             <div className={cx('description_user', 'w-50 ps-3 pe-3')}>
               Thảo Anh đéo yêu Hoàng Dương
