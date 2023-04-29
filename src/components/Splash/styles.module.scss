@@ -1,0 +1,61 @@
+.splash{
+    animation: heart 4s ease-in-out;
+    animation-fill-mode: forwards;
+    background: url('../../assets/images/tinny_heart.png');
+    width: 100vw;
+    height: 100vh;
+ 
+}
+@keyframes heart {
+    0% {
+        background: url('../../assets/images/tinny_heart.png');
+        background-position: center ;
+        background-repeat: no-repeat;
+        
+    }
+    5% {
+        transform: scale(.8,.8) ;
+    }
+    10% {
+        transform: scale(1,1) ;
+    }
+    25% {
+        background: url('../../assets/images/small_heart.png');
+        background-position: center ;
+        background-repeat: no-repeat;
+    }
+    30% {
+        transform: scale(.8,.8) ;
+    }
+    35% {
+        transform: scale(1,1) ;
+    }
+    50% {
+        background: url('../../assets/images/medium_heart.png');
+        background-position: center ;
+        background-repeat: no-repeat;
+    }
+    55% {
+        transform: scale(.8,.8) ;
+    }
+    60% {
+        transform: scale(1,1) ;
+    }
+    75% {
+        background: url('../../assets/images/big_heart.png');
+        background-position: center ;
+        background-repeat: no-repeat;
+    }
+    80% {
+        transform: scale(.8,.8) ;
+    }
+    85% {
+        transform: scale(4,4) ;
+    }
+    100% {
+        background: url('../../assets/images/background_img.png');
+        background-position: center ;
+        background-repeat: no-repeat;
+
+    }
+}

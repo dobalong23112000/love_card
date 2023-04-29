@@ -108,6 +108,29 @@ body {
 }
 
 
+  .file-input-label {
+    position: relative;
+  }
+  
+  .file-input-label .placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: rgb(225, 143, 143);
+    background-color: #ffe8e8;
+    height: 56px;
+    box-shadow: 0px -1px 0px 0px white;
+    border-radius: 30px;
+    border: 1px solid #fcfcfc;
+    padding-left: 37px;
+    padding-right: 19px;
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+  }
+  
+  
 //Animation 
 .active-text-register {
     animation: text-register-active 1s ease-in-out;
@@ -175,7 +198,7 @@ body {
 
     100% {
         opacity: 0;
-        display: none;
+        height: 0px;
 
     }
 }

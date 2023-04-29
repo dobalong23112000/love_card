@@ -1,15 +1,13 @@
 
 import Auth from 'pages/Auth';
 import Home from 'pages/Home';
-import Loading from 'components/Loading';
 import Config from 'pages/Config';
 import Music from 'pages/Music';
+import Splash from 'components/Splash';
+import Card from 'pages/Card';
 
 const publicRoutes = [
-    {
-        path: '/',
-        component: Home
-    },
+
     {
         path: '/auth',
         component: Auth,
@@ -17,10 +15,18 @@ const publicRoutes = [
     },
     {
         path: '/splash',
-        component: Loading,
+        component: Splash,
         layout: null
 
     },
+    {
+        path: '/card',
+        component: Card,
+        layout: null
+    }
+
+]
+const privateRoutes = [
     {
         path: '/config',
         component: Config,
@@ -29,9 +35,10 @@ const publicRoutes = [
         path: '/music',
         component: Music,
 
+    },
+    {
+        path: '/',
+        component: Home
     }
-]
-const privateRoutes = [
-
 ]
 export { publicRoutes, privateRoutes }

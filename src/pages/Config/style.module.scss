@@ -1,0 +1,28 @@
+.avatar {
+    width: 122px;
+    height: 119px;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: auto;
+    position: relative;
+}
+
+.avatar>img {
+    border-radius: 50%;
+}
+
+
+
+.wrap_icon {
+    width: 112px;
+    height: 112px;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+}
+.wrap_icon >svg {
+    position: absolute;
+    top: 45px;
+    left: 45px;
+}

@@ -6,14 +6,6 @@
     margin-top: 168px;
 }
 
-.content {
-    min-height: 592px;
-    width: 367px;
-    background-blend-mode: overlay;
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-
-}
-
 .heart-count {
     position: absolute;
     top: 80px;
@@ -79,13 +71,10 @@
 
 }
 
-// .progress-bar::after {
-//     content: url('../../assets/images/heart_count.svg');
-//     position: absolute;
-//     top: 0;
-//     right: 30%;
-//     bottom: 0;
-//     width: 20px;
-//     height: 20px;
-//     margin: auto;
-// }
+.sub-content {
+    min-height: 146px;
+    width: 367px;
+    background-blend-mode: overlay;
+    background: linear-gradient(120deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 20px;
+}
