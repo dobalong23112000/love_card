@@ -213,7 +213,7 @@ const Config = () => {
                             <div className='mb-4'>
                                 <Label className="file-input-label" for="file-input">
                                     <span className="placeholder">Chọn Avatar bạn 1</span>
-                                    <Input type="file" name="avatarMale" id="file-input" style={{ opacity: 0 }} onChange={(e) => {
+                                    <Input type="file" accept="image/png, image/jpeg, image/gif" name="avatarMale" id="file-input" style={{ opacity: 0 }} onChange={(e) => {
                                         let img = e.target.files[0];
                                         if (img) {
                                             getBase64AvatarMale(img)
@@ -279,7 +279,7 @@ const Config = () => {
                             <div className='mb-4'>
                                 <Label className="file-input-label" for="file-input-avatarFemale">
                                     <span className="placeholder">Chọn Avatar bạn 2</span>
-                                    <Input type="file" name="avatarFemale" id="file-input-avatarFemale" style={{ opacity: 0 }} onChange={(e) => {
+                                    <Input type="file" accept="image/png, image/jpeg, image/gif" name="avatarFemale" id="file-input-avatarFemale" style={{ opacity: 0 }} onChange={(e) => {
                                         let img = e.target.files[0];
                                         if (img) {
                                             getBase64AvatarFemale(img)
@@ -350,7 +350,7 @@ const Config = () => {
                         />
                     </ModalBody>
                     <ModalFooter>
-                        <Button style={{ background: 'rgb(225, 143, 143)', fontSize: '15px', borderColor: 'rgb(225, 143, 143)', width:"100px", height:'35px' }} onClick={async () => {
+                        <Button style={{ background: 'rgb(225, 143, 143)', fontSize: '15px', borderColor: 'rgb(225, 143, 143)', width: "100px", height: '35px' }} onClick={async () => {
                             if (cropRef) {
                                 const dataUrl = cropRef.current.getImage().toDataURL();
                                 if (avatarEdit?.type === 1) {
@@ -363,7 +363,7 @@ const Config = () => {
                         }}>
                             Lưu
                         </Button>{' '}
-                        <Button style={{width:"100px", height:'35px', fontSize: '15px'}} onClick={toggleModalEditAvatar}>
+                        <Button style={{ width: "100px", height: '35px', fontSize: '15px' }} onClick={toggleModalEditAvatar}>
                             Hủy
                         </Button>
                     </ModalFooter>

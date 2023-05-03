@@ -21,12 +21,26 @@ const UserApi = {
         )
     },
     updateMusic: (data) => {
-        const url = `${windowEnvConfig.REACT_APP_BASE_API_URL}/expose/nfc-love/update-music`;
+        console.log({ data })
+        const url = `${windowEnvConfig.REACT_APP_BASE_API_URL}/expose/nfc-love/upload-file`;
         return axios.post(
             `${url}`,
-            data,
+            data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+
         )
-    }
+    },
+    getFile: () => {
+        const url = `${windowEnvConfig.REACT_APP_BASE_API_URL}/expose/nfc-love/get-file`;
+        return axios.get(
+            `${url}`, {
+            responseType: 'blob'
+        }
+        )
+    },
 
 }
 export default UserApi

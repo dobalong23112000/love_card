@@ -8,6 +8,7 @@ import Loading from 'components/Loading'
 import Swal from 'sweetalert2'
 import UserApi from 'api/UserApi'
 import { AuthContext } from 'contexts/AuthContext'
+import { Input, Label } from 'reactstrap'
 // const cx = classNames.bind(style)
 const Music = () => {
     const { ...methods } = useForm({ mode: 'onChange' });
@@ -23,6 +24,7 @@ const Music = () => {
     }
     const { authState, loadUser } = useContext(AuthContext)
     const { setValue } = methods;
+    const [file, setFile] = useState()
     useEffect(() => {
         if (authState.isAuthenticated) {
             const { contentMusic } = authState.user
@@ -50,8 +52,12 @@ const Music = () => {
     const onSubmit = async (data) => {
         setErrors()
         setIsLoading(true);
+        const formData = new FormData();
+        formData.append('file', file);
+
+        console.log({ formData })
         try {
-            const response = await UserApi.updateMusic({ contentMusic: JSON.stringify(data) });
+            const response = await UserApi.updateMusic(formData);
             if (response?.data?.status === 200) {
                 Swal.fire({
                     position: 'center',
@@ -90,7 +96,7 @@ const Music = () => {
                 <div className={'content'}>
                     <div style={{ display: "flex", alignItems: "center", flexDirection: "column", paddingTop: "36px" }}>
                         <FormProvider {...methods}>
-                            <div className='mb-5'>
+                            <div className='mt-5 mb-5'>
                                 <InputTextField
                                     name="name_song_1"
                                     label={''}
@@ -104,7 +110,7 @@ const Music = () => {
                                 <div className='text-error mt-1 ps-4'>{errors?.name_song_1?.message}</div>
 
                             </div>
-                            <div className='mb-5'>
+                            {/* <div className='mb-5'>
                                 <InputTextField
                                     name="link_song_1"
                                     label={''}
@@ -117,8 +123,39 @@ const Music = () => {
                                 />
                                 <div className='text-error mt-1 ps-4'>{errors?.link_song_1?.message}</div>
 
-                            </div>
+                            </div> */}
                             <div className='mb-5'>
+                                <Label className="file-input-label" for="file-input-mp3">
+                                    <div className="placeholder ">
+                                        <div className='text-truncate'>
+                                            {file ? file.name : 'Chọn file nhạc chúng mình '}
+                                        </div></div>
+                                    <Input type="file" accept="audio/mp3" name="mp3" id="file-input-mp3" style={{ opacity: 0 }} onChange={(e) => {
+                                        let mp3file = e.target.files[0];
+                                        // let newName = '123456' + "." + 'mp3';
+                                        // const newFile = new File([mp3file], newName, { type: mp3file.type });
+                                        // console.log({ newFile });
+                                        // console.log({ mp3file })
+                                        setFile(mp3file)
+                                        // if (img) {
+                                        //     getBase64AvatarFemale(img)
+                                        // }
+                                    }} />
+
+                                </Label>
+                                {/* {<div className={cx('avatar', 'mt-3')}>
+                                    <img src={''} alt='' width={"100%"} height={"100%"}></img>
+                                    <div className={(cx('wrap_icon'))} onClick={() => {
+                                        // setAvatarEdit({ avatar: avatarFemale, type: 2 });
+                                        // setIsOpenModalEditAvatar(true)
+                                    }}>
+                                        <FaRegEdit size={24} color='white' />
+
+                                    </div>
+                                </div>} */}
+
+                            </div>
+                            {/* <div className='mb-5'>
                                 <InputTextField
                                     name="name_song_2"
                                     label={''}
@@ -172,7 +209,7 @@ const Music = () => {
                                     }}
                                 />
                                 <div className='text-error mt-1 ps-4'>{errors?.link_song_3?.message}</div>
-                            </div>
+                            </div> */}
 
 
                             <div className='icon_save' onClick={methods.handleSubmit(onSubmit, onError)}><Save /></div>

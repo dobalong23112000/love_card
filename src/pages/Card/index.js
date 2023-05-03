@@ -15,18 +15,37 @@ import { ImMusic } from "react-icons/im";
 import Play from 'components/Icons/Play'
 import Skip from 'components/Icons/Skip'
 import Previous from 'components/Icons/Previous'
+import UserApi from 'api/UserApi'
 const cx = classNames.bind(style)
 const Card = () => {
     const [user, setUser] = useState()
     const { authState } = useContext(AuthContext)
     const [listMusic, setListMusic] = useState([])
+    const [audioUrl, setAudioUrl] = useState()
+    const [duration, setDuration] = useState(0);
+    const getFile = async () => {
+        const data = await UserApi.getFile();
+        console.log(data);
+        const url = window.URL.createObjectURL(new Blob([data.data], { type: 'audio/mpeg' }));
+        const audio = new Audio(url);
+        audio.addEventListener('loadedmetadata', () => {
+            setDuration(audio.duration);
+        });
+        setAudioUrl(audio);
+
+    }
+    console.log({ duration })
     useEffect(() => {
         setUser(authState.user)
         // const {contentMusic} = authState.user?.contentMusic;
         if (authState.user?.contentMusic) {
             setListMusic(JSON.parse(authState.user?.contentMusic))
         }
+        getFile();
     }, [authState])
+    const handlePlayAudio = () => {
+        audioUrl.play();
+    };
     console.log({ listMusic })
     return (
         <div className='d-flex justify-content-center' style={{ minHeight: "926px", background: `url('${BRGIMG}')`, backgroundRepeat: "no-repeat", position: "relative", backgroundColor: "#FFE8E8", paddingBottom: "30px" }}>
@@ -90,15 +109,21 @@ const Card = () => {
                     </div>
                 </div>
                 <div className={cx('sub-content', 'mt-5')}>
-                    <div className='text-center mb-3 mt-3' style={{fontSize:"15px", lineHeight:"20px", color:"#FFABAB", fontWeight:"900"}}><ImMusic /><span className='ms-3 me-3' >Yêu lại từ đầu</span> <ImMusic /></div>
-                    <div className='m-auto mb-3 mt-4' style={{width:"80%"}}>
+                    <div className='text-center mb-3 mt-3' style={{ fontSize: "15px", lineHeight: "20px", color: "#FFABAB", fontWeight: "900" }}><ImMusic /><span className='ms-3 me-3' >Yêu lại từ đầu</span> <ImMusic /></div>
+                    <div className='m-auto mb-3 mt-4' style={{ width: "80%" }}>
                         <Progress
                             value={50}
-                           barStyle={{
-                            backgroundColor:"#FFABAB"
-                           }}
+                            barStyle={{
+                                backgroundColor: "#FFABAB"
+                            }}
                         /></div>
-                    <div className='text-center'><Previous /><Play /><Skip /></div>
+                    <div className='text-center'>
+                        <Previous />
+                        <Play onClick={handlePlayAudio} />
+                        <Skip />
+
+                    </div>
+
                 </div>
             </div>
         </div>
