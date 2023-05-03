@@ -33,14 +33,7 @@ const UserApi = {
 
         )
     },
-    getFile: () => {
-        const url = `${windowEnvConfig.REACT_APP_BASE_API_URL}/expose/nfc-love/get-file`;
-        return axios.get(
-            `${url}`, {
-            responseType: 'blob'
-        }
-        )
-    },
+   
 
 }
 export default UserApi
