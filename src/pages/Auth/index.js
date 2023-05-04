@@ -5,19 +5,20 @@ import classNames from 'classnames/bind'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form';
 import AuthApi from 'api/AuthApi';
-import Loading from 'components/Loading';
 import Swal from 'sweetalert2';
 import { AuthContext } from 'contexts/AuthContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import Loader from 'components/Loading/Loader/Loader';
 const cx = classNames.bind(styles)
 const Auth = () => {
+    const { state } = useLocation();
+    console.log({ state })
     const { loginUser, authState } = useContext(AuthContext)
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const { register: registerRegister, handleSubmit: handleSubmitRegister, reset: resetRegister, watch: watchRegister } = useForm();
     const [loading, setLoading] = useState(false);
     const navigation = useNavigate();
-
     // Form đăng nhập
     const onSubmitLogin = async (data) => {
         const { email, password } = data;
@@ -27,7 +28,7 @@ const Auth = () => {
             passWord: password
         });
         if (response?.status === 200) {
-            navigation('/');
+            navigation('/home');
         } else {
             Swal.fire({
                 position: 'center',
@@ -99,39 +100,48 @@ const Auth = () => {
     const onSubmitRegister = async (data) => {
         setErrors();
         setLoading(true)
-        const { email_register, password_register, phone_register, username } = data
-        let dataRegister = {
-            email: email_register,
-            telephone: phone_register,
-            passWord: password_register,
-            nickName: username,
-            uuid: "d6c516a0-7305-49a9-ae9e-68d295907c3d",
-        }
-        try {
-            const response = await AuthApi.register(dataRegister);
-            if (response?.data?.status === 200) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Đăng ký thành công',
-                    showConfirmButton: true
-                }).then(() => {
-                    setIsLogin(true);
-                })
-                resetRegister();
-            } else {
+        if (state?.uuid) {
+            const { email_register, password_register, phone_register, username } = data
+            let dataRegister = {
+                email: email_register,
+                telephone: phone_register,
+                passWord: password_register,
+                nickName: username,
+                uuid: state?.uuid,
+            }
+            try {
+                const response = await AuthApi.register(dataRegister);
+                if (response?.data?.status === 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Đăng ký thành công',
+                        showConfirmButton: true
+                    }).then(() => {
+                        setIsLogin(true);
+                    })
+                    resetRegister();
+                } else {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: response?.data?.message,
+                        showConfirmButton: true
+                    })
+                }
+            } catch (e) {
                 Swal.fire({
                     position: 'center',
                     icon: 'error',
-                    title: response?.data?.message,
+                    title: 'Có lỗi xảy ra',
                     showConfirmButton: true
                 })
             }
-        } catch (e) {
+        } else {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Có lỗi xảy ra',
+                title: 'Bạn chưa được cấp mã thẻ',
                 showConfirmButton: true
             })
         }
@@ -140,11 +150,11 @@ const Auth = () => {
     }
 
     if (authState.isAuthenticated) {
-        return <Navigate to='/' replace={true} />
+        return <Navigate to='/home' replace={true} />
     }
     return (
         <>
-            {(authState.authLoading || loading) && <Loading />}
+            {(authState.authLoading || loading) && <Loader />}
             <div className={`${cx('wrapper')} ${isLogin ? "login_background" : "register_background"}`}>
                 <div className={`${cx('login-text')} mt-5 ${isLogin ? "active-text-login" : "nonactive-text-login"}`} onClick={() => {
                     setIsLogin(true);

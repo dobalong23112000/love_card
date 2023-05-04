@@ -21,12 +21,12 @@ const Home = () => {
     <div className={'wrapper'}>
       <div className={cx('heart-count')}>
         <img src={heart_count} alt='' width={250.47} height={212.99}></img>
-        <div className={cx('text-count')}>{(user?.totalLoveDays ?? '365') + ' DAYS' ?? 'Số ngày yêu nhau'}</div>
+        <div className={cx('text-count')}>{(user?.totalLoveDays ?? 'LOVE') + ' DAYS' }</div>
       </div>
       <div className={'content'}>
-        <div className={cx('description')}>{user?.description ?? 'Mình đã bên nhau'}</div>
+        <div className={cx('description')}>{user?.description ?? 'Mô tả tình yêu của 2 bạn'}</div>
         <div className={cx('timeline', 'd-flex mt-5 justify-content-around align-items-center')}>
-          <div className={cx('text-timeline')}>{user?.totalLoveDays ?? '365'} ngày</div>
+          <div className={cx('text-timeline')}>{user?.totalLoveDays ?? '0'} ngày</div>
           <div className='w-50 position-relative'>
             <Progress value={(user?.totalLoveDays ? (Number(user?.totalLoveDays) % 100) : 0)} style={{
               backgroundColor: 'white',
@@ -37,7 +37,7 @@ const Home = () => {
               <Heart />
             </div>
           </div>
-          <div className={cx('text-timeline')}>{(user?.totalLoveDays ? (user?.totalLoveDays + (100 - (Number(user?.totalLoveDays) % 100))) : '365')} ngày</div>
+          <div className={cx('text-timeline')}>{(user?.totalLoveDays ? (user?.totalLoveDays + (100 - (Number(user?.totalLoveDays) % 100))) : '0')} ngày</div>
         </div>
         <div className='mt-5'>
           <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>

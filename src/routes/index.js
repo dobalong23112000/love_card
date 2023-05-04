@@ -5,22 +5,27 @@ import Config from 'pages/Config';
 import Music from 'pages/Music';
 import Splash from 'components/Splash';
 import Card from 'pages/Card';
+import Error404 from 'pages/errors/Error404';
 
 const publicRoutes = [
-
+    { path: `/*`, component: Error404, layout: null },
     {
         path: '/auth',
         component: Auth,
         layout: null
     },
     {
-        path: '/splash',
+        path: '/:uuid',
         component: Splash,
         layout: null
-
     },
     {
-        path: '/card',
+        path: '/',
+        component: Splash,
+        layout: null
+    },
+    {
+        path: '/card/:nickName',
         component: Card,
         layout: null
     }
@@ -36,8 +41,9 @@ const privateRoutes = [
         component: Music,
 
     },
+
     {
-        path: '/',
+        path: '/home',
         component: Home
     }
 ]

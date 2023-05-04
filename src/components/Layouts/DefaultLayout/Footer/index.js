@@ -23,7 +23,7 @@ const Footer = () => {
         <div className={cx('footer')}>
             <div className={cx('wrapper')}>
                 <div className={activeItem === 1 ? cx('active-item') : ''} onClick={() => {
-                    navigation('/')
+                    navigation('/home')
                     setActiveItem(1)
                 }}>
                     <IoHeartOutline size={36} color='#BE6E6E' />

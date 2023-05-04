@@ -9,11 +9,11 @@ import ScrollToTop from 'helpers/ScrollToTop';
 import ProtectedRoute from 'routes/ProtectedRoute';
 function App() {
   return (
-    <Router>
-      <div className='App'>
-        <ScrollToTop />
-        <Routes >
-          {publicRoutes.map((route) => {
+      <Router>
+        <div className='App'>
+          <ScrollToTop />
+          <Routes >
+            {publicRoutes.map((route) => {
               let Layout = DefaultLayout
               if (route.layout) {
                 Layout = route.layout
@@ -54,9 +54,11 @@ function App() {
 
                   } />)
             })}
-        </Routes>
-      </div>
-    </Router>
+          </Routes>
+        </div>
+      </Router>
+
+
   );
 }
 

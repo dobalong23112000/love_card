@@ -4,13 +4,12 @@ import styles from './styles.module.scss'
 
 
 const cx = classNames.bind(styles)
-const Loading = () => {
+const Loader = () => {
  
     return (
         <div className={cx('Loader')}>
-            <div className={cx('loading')}></div>
         </div>
     )
 }
 
-export default Loading
+export default Loader
