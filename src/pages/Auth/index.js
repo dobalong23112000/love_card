@@ -10,6 +10,8 @@ import { AuthContext } from 'contexts/AuthContext';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Loader from 'components/Loading/Loader/Loader';
 import Loading from 'components/Loading';
+import GetMessageValidate from 'helpers/GetMessageValidate';
+import successGif from '../../assets/images/done.gif'
 const cx = classNames.bind(styles)
 const Auth = () => {
     const { state } = useLocation();
@@ -24,22 +26,30 @@ const Auth = () => {
     const onSubmitLogin = async (data) => {
         const { email, password } = data;
         setLoading(true)
-        const response = await loginUser({
-            email,
-            passWord: password
-        });
-        if (response?.status === 200) {
-            navigation('/home');
-        } else {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Email hoặc mật khẩu không chính xác',
-                showConfirmButton: true
-            })
-        }
-        setLoading(false)
         setErrors()
+
+        try {
+            const response = await loginUser({
+                email,
+                passWord: password
+            });
+            if (response?.status === 200) {
+                navigation('/home');
+            } else {
+                GetMessageValidate('Email hoặc mật khẩu không chính xác')
+                // Swal.fire({
+                //     position: 'center',
+                //     icon: 'error',
+                //     title: 'Email hoặc mật khẩu không chính xác',
+                //     showConfirmButton: true
+                // })
+            }
+        } catch (e) {
+            GetMessageValidate('Có lỗi xảy ra')
+
+        }
+
+        setLoading(false)
     };
 
     const [errors, setErrors] = useState()
@@ -116,35 +126,44 @@ const Auth = () => {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Đăng ký thành công',
-                        showConfirmButton: true
+                        title: `<div style="color: rgb(225, 143, 143); font-weight: bold">Đăng ký thành công</div>`,
+                        imageUrl: successGif,
+                        background: 'linear-gradient(to top, white, #FFABAB)',
+                        showConfirmButton: true,
+                        confirmButtonColor: '#FFABAB',
+                        confirmButtonText: '<div style="color: white;font-weight: bold;width: 135px;height: 30px;display: flex;align-items: center;justify-content: center;font-size: 18px">Đóng</div>',
                     }).then(() => {
                         setIsLogin(true);
                     })
                     resetRegister();
                 } else {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: response?.data?.message,
-                        showConfirmButton: true
-                    })
+                    // Swal.fire({
+                    //     position: 'center',
+                    //     icon: 'error',
+                    //     title: response?.data?.message,
+                    //     showConfirmButton: true
+                    // })
+                    GetMessageValidate(response?.data?.message)
+
                 }
             } catch (e) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Có lỗi xảy ra',
-                    showConfirmButton: true
-                })
+                GetMessageValidate('Có lỗi xảy ra')
+                // Swal.fire({
+                //     position: 'center',
+                //     icon: 'error',
+                //     title: 'Có lỗi xảy ra',
+                //     showConfirmButton: true
+                // })
             }
         } else {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Bạn chưa được cấp mã thẻ',
-                showConfirmButton: true
-            })
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'error',
+            //     title: 'Bạn chưa được cấp mã thẻ',
+            //     showConfirmButton: true
+            // })
+            GetMessageValidate('Bạn chưa được cấp mã thẻ')
+
         }
         setLoading(false)
 

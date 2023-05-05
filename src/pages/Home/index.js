@@ -40,7 +40,7 @@ const Home = () => {
           <div className={cx('text-timeline')}>{(user?.totalLoveDays ? (user?.totalLoveDays + (100 - (Number(user?.totalLoveDays) % 100))) : '0')} ngày</div>
         </div>
         <div className='mt-5'>
-          <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>
+          <div className={cx('d-flex w-100 mb-3 justify-content-around')}>
             <div className={cx('avatar')}>
               <img src={user?.avatarMale ?? avatar_male} alt='' width={"100%"} height={"100%"}></img>
             </div>
@@ -49,7 +49,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>
+          <div className={cx('d-flex w-100 mb-3 justify-content-around')}>
             <div className={cx('name', 'w-50 ps-3 pe-3')}>
               {user?.nameMale ?? 'Tên bạn 1'}
             </div>
@@ -58,7 +58,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>
+          <div className={cx('d-flex w-100 mb-3 justify-content-around')}>
             <div className={cx('horoscope', 'w-50 d-flex justify-content-center')}>
               <img src={getZodiacSign(user?.dobMale) ?? kim_nguu} alt='' width={54} height={59}></img>
             </div>
@@ -67,7 +67,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={cx('d-flex w-100 justify-content-evenly')}>
+          <div className={cx('d-flex w-100 justify-content-around')}>
             <div className={cx('description_user', 'w-50 ps-3 pe-3  text-center')}>
               {user?.descriptionMale ?? 'Mô tả bạn 1'}
             </div>
