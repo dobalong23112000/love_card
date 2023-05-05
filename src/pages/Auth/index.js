@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from 'contexts/AuthContext';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Loader from 'components/Loading/Loader/Loader';
+import Loading from 'components/Loading';
 const cx = classNames.bind(styles)
 const Auth = () => {
     const { state } = useLocation();
@@ -154,7 +155,8 @@ const Auth = () => {
     }
     return (
         <>
-            {(authState.authLoading || loading) && <Loader />}
+            {(authState.authLoading) && <Loader />}
+            {(loading) && <Loading />}
             <div className={`${cx('wrapper')} ${isLogin ? "login_background" : "register_background"}`}>
                 <div className={`${cx('login-text')} mt-5 ${isLogin ? "active-text-login" : "nonactive-text-login"}`} onClick={() => {
                     setIsLogin(true);
@@ -168,7 +170,7 @@ const Auth = () => {
             d-flex justify-content-center align-items-center flex-column
             ${!isLogin ? 'active-form' : 'nonactive-form'}`}
                     name='login_form'
-                    style={{ position: "absolute", top: "282px", marginTop: "60px" }}
+                    style={{ position: "absolute", top: "190px", marginTop: "60px" }}
                 >
                     <FormGroup className={cx('form_group')}
                     >
@@ -230,7 +232,7 @@ const Auth = () => {
                     </FormGroup>
                 </Form>)
                 }
-                {!isLogin && (<Form className={`d-flex justify-content-center align-items-center flex-column ${!!isLogin ? 'active-form' : 'nonactive-form'}`} style={{ position: "absolute", top: "330px" }} name='register_form'>
+                {!isLogin && (<Form className={`d-flex justify-content-center align-items-center flex-column ${!!isLogin ? 'active-form' : 'nonactive-form'}`} style={{ position: "absolute", top: "230px" }} name='register_form'>
                     <FormGroup className={cx('form_group')}>
                         <div style={{ position: "absolute", top: '15px', left: "18px", color: '#FFABAB', fontWeight: 600, zIndex: 1 }}>
                             <AiOutlineMail size={12} />

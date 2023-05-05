@@ -7,12 +7,12 @@ import Save from 'components/Icons/Save'
 import moment from 'moment/moment'
 import UserApi from 'api/UserApi'
 import Loading from 'components/Loading'
-import Swal from 'sweetalert2'
 import { AuthContext } from 'contexts/AuthContext'
 import { Button, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import { FaRegEdit } from "react-icons/fa";
 import AvatarEditor from 'react-avatar-editor';
-
+import getMessageSuccess from 'helpers/getMessageSuccess'
+import GetMessageValidate from 'helpers/GetMessageValidate'
 const cx = classNames.bind(style)
 const Config = () => {
     const [errors, setErrors] = useState()
@@ -55,29 +55,27 @@ const Config = () => {
             }
             const response = await UserApi.update(dataSend);
             if (response?.data?.status === 200) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Lưu thông tin thành công',
-                    showConfirmButton: true
-                })
+                getMessageSuccess('Lưu thông tin thành công')
                 await loadUser()
             }
             else {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Có lỗi xảy ra',
-                    showConfirmButton: true
-                })
+                // Swal.fire({
+                //     position: 'center',
+                //     icon: 'error',
+                //     title: 'Có lỗi xảy ra',
+                //     showConfirmButton: true
+                // })
+                GetMessageValidate(response?.data?.message)
             }
         } catch (e) {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Có lỗi xảy ra',
-                showConfirmButton: true
-            })
+            GetMessageValidate()
+
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'error',
+            //     title: 'Có lỗi xảy ra',
+            //     showConfirmButton: true
+            // })
         }
         setIsLoading(false);
     }
@@ -185,10 +183,10 @@ const Config = () => {
                                     // formError={formError}
                                     defaultValue={defaultValue.dobMale}
                                     rules={{
-                                        required: 'Ngày-tháng-năm sinh sinh không được bỏ trống', validate: (data) => {
+                                        required: 'Ngày-tháng-năm sinh không được bỏ trống', validate: (data) => {
                                             const date = moment(data, 'DD-MM-YYYY', true);
                                             if (!date.isValid()) {
-                                                return "Ngày-tháng-năm sinh sinh không đúng định dạng hoặc không tồn tại";
+                                                return "Ngày-tháng-năm sinh không đúng định dạng hoặc không tồn tại";
                                             }
                                         }
                                     }}
@@ -248,14 +246,14 @@ const Config = () => {
                                 <InputTextField
                                     name="dobFemale"
                                     label={''}
-                                    placeholder={'Ngày-tháng-năm sinh'}
+                                    placeholder={'Ngày-tháng-năm sinh (14-02-2023)'}
                                     // formError={formError}
                                     defaultValue={defaultValue.dobFemale}
                                     rules={{
                                         required: 'Ngày-tháng-năm sinh không được bỏ trống', validate: (data) => {
                                             const date = moment(data, 'DD-MM-YYYY', true);
                                             if (!date.isValid()) {
-                                                return "Ngày-tháng-năm sinh không đúng định dạng hoặc không tồn tại";
+                                                return "Ngày-tháng-năm yêu sinh không đúng định dạng hoặc không tồn tại";
                                             }
                                         }
                                     }}
@@ -303,7 +301,7 @@ const Config = () => {
                                 <InputTextField
                                     name="dobStartLove"
                                     label={''}
-                                    placeholder={'Ngày-tháng-năm yêu'}
+                                    placeholder={'Ngày-tháng-năm yêu (14-02-2023)'}
                                     // formError={formError}
                                     defaultValue={defaultValue.dobStartLove}
                                     rules={{

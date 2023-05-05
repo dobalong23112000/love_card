@@ -14,6 +14,11 @@ body {
     text-rendering: optimizeSpeed;
 }
 
+.container {
+    background-repeat: no-repeat;
+    background-color: #ffe8e8;
+}
+
 .wrapper {
     width: 100%;
     display: flex;
@@ -129,46 +134,55 @@ body {
     align-items: center;
     font-weight: 900;
 }
+
+.swal2-styled.swal2-default-outline:focus {
+    box-shadow: none !important;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
-      overflow: hidden;
-      width: 100%;
-      -webkit-appearance: none;
-      background-color: white;
-      height: 15px;
+        overflow: hidden;
+        width: 100%;
+        -webkit-appearance: none;
+        background-color: white;
+        height: 15px;
     }
-    
+
     input[type='range']::-webkit-slider-runnable-track {
-      height: 10px;
-      -webkit-appearance: none;
-      color: rgb(225, 143, 143);
-      margin-top: -1px;
+        height: 10px;
+        -webkit-appearance: none;
+        color: rgb(225, 143, 143);
+        margin-top: -1px;
     }
-    
+
     input[type='range']::-webkit-slider-thumb {
-      width: 10px;
-      -webkit-appearance: none;
-      height: 10px;
-      cursor: ew-resize;
-      border-radius: 50%;
-      background: rgb(225, 143, 143);
-      box-shadow: -294px 0 0 294px rgb(225, 143, 143);
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        cursor: ew-resize;
+        border-radius: 50%;
+        background: rgb(225, 143, 143);
+        box-shadow: -294px 0 0 294px rgb(225, 143, 143);
     }
 
 }
+
 /** FF*/
 input[type="range"]::-moz-range-progress {
-  background-color: rgb(225, 143, 143); 
+    background-color: rgb(225, 143, 143);
 }
-input[type="range"]::-moz-range-track {  
-  background-color: white;
+
+input[type="range"]::-moz-range-track {
+    background-color: white;
 }
+
 /* IE*/
 input[type="range"]::-ms-fill-lower {
-  background-color: rgb(225, 143, 143); 
+    background-color: rgb(225, 143, 143);
 }
-input[type="range"]::-ms-fill-upper {  
-  background-color: white;
+
+input[type="range"]::-ms-fill-upper {
+    background-color: white;
 }
 
 //Animation 
@@ -186,7 +200,7 @@ input[type="range"]::-ms-fill-upper {
     }
 
     to {
-        bottom: 615px;
+        bottom: calc(100% - 205px);
     }
 }
 
@@ -194,13 +208,13 @@ input[type="range"]::-ms-fill-upper {
     animation: text-register-nonactive 1s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
-    bottom: 615px;
+    bottom: calc(100% - 205px);
 
 }
 
 @keyframes text-register-nonactive {
     0% {
-        bottom: 615px;
+        bottom: calc(100% - 205px);
 
     }
 
@@ -247,30 +261,27 @@ input[type="range"]::-ms-fill-upper {
     position: absolute;
     animation: text-login-active 1s ease-in-out;
     animation-fill-mode: forwards;
-    top: 110px;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 28px;
     color: white;
+    top: 35px;
 }
 
 @keyframes text-login-active {
     from {
-        top: 110px;
-        font-size: 20px;
+        top: 35px;
         line-height: 28px;
         color: white;
     }
 
     to {
-        top: 220px;
-        font-size: 30px;
-        line-height: 40px;
+        top: 125px;
         color: rgb(225, 143, 143);
     }
 }
 
 .nonactive-text-login {
-    top: 220px;
+    top: 125px;
     font-size: 30px;
     line-height: 40px;
     color: rgb(225 143 143);
@@ -281,16 +292,12 @@ input[type="range"]::-ms-fill-upper {
 
 @keyframes text-login-nonactive {
     from {
-        top: 220px;
-        font-size: 30px;
-        line-height: 40px;
+        top: 125px;
         color: rgb(225 143 143);
     }
 
     to {
-        top: 110px;
-        font-size: 20px;
-        line-height: 28px;
+        top: 35px;
         color: white;
     }
 }
@@ -305,7 +312,7 @@ input[type="range"]::-ms-fill-upper {
     animation: form-register-active 1s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
-    top: 215px;
+    top: 125px;
 }
 
 @keyframes form-register-active {
@@ -316,7 +323,7 @@ input[type="range"]::-ms-fill-upper {
     }
 
     to {
-        top: 232px;
+        top: 135px;
         width: 428px;
         height: 802px;
         border-radius: 100px
@@ -324,7 +331,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .active-form-login {
-    top: 232px;
+    top: 80px;
     width: 428px;
     height: 802px;
     border-radius: 100px;
@@ -346,7 +353,7 @@ input[type="range"]::-ms-fill-upper {
     to {
         width: 342px;
         height: 496px;
-        top: 215px;
+        top: 80px;
         border-radius: 20px
     }
 }

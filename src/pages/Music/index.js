@@ -5,11 +5,12 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { InputTextField } from 'components/CustomFields/InputTextFiled'
 import Save from 'components/Icons/Save'
 import Loading from 'components/Loading'
-import Swal from 'sweetalert2'
 import UserApi from 'api/UserApi'
 import { AuthContext } from 'contexts/AuthContext'
 import { Input, Label } from 'reactstrap'
 import moment from 'moment'
+import getMessageSuccess from 'helpers/getMessageSuccess'
+import GetMessageValidate from 'helpers/GetMessageValidate'
 // const cx = classNames.bind(style)
 const Music = () => {
     const { ...methods } = useForm({ mode: 'onChange' });
@@ -21,7 +22,7 @@ const Music = () => {
     }
     const { authState, loadUser } = useContext(AuthContext)
     const { setValue } = methods;
-    const [file, setFile] = useState()
+    const [file, setFile] = useState(null)
     const [fileName, setFileName] = useState('')
     useEffect(() => {
         if (authState.isAuthenticated) {
@@ -35,36 +36,43 @@ const Music = () => {
         setErrors()
         setIsLoading(true);
         const formData = new FormData();
-        formData.append('file', file);
+        if (file) {
+            formData.append('file', file);
+
+        } else {
+            const emtyFile = new File([new ArrayBuffer(0)], 'empty-file.txt', { type: 'text/plain' })
+            formData.append('file', emtyFile);
+            console.log(emtyFile)
+        }
         formData.append('fileName', fileName)
         formData.append('musicName', data.musicName)
 
         try {
             const response = await UserApi.updateMusic(formData);
             if (response?.data?.status === 200) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Lưu thông tin thành công',
-                    showConfirmButton: true
-                })
+
+                getMessageSuccess('Lưu thông tin thành công')
                 await loadUser()
             }
             else {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Có lỗi xảy ra',
-                    showConfirmButton: true
-                })
+                // Swal.fire({
+                //     position: 'center',
+                //     icon: 'error',
+                //     title: 'Có lỗi xảy ra',
+                //     showConfirmButton: true
+                // })
+                GetMessageValidate(response?.data?.message)
+
             }
         } catch (e) {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Có lỗi xảy ra',
-                showConfirmButton: true
-            })
+            // Swal.fire({
+            //     position: 'center',
+            //     icon: 'error',
+            //     title: 'Có lỗi xảy ra',
+            //     showConfirmButton: true
+            // })
+            GetMessageValidate('Có lỗi xảy ra')
+
         }
         setIsLoading(false);
     }

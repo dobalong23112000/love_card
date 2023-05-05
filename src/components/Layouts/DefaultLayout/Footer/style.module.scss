@@ -1,5 +1,5 @@
 .footer {
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     width: 100%;
     display: flex;
@@ -19,14 +19,25 @@
 }
 
 .active-item {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     background-color: white;
-    // border: 15px solid #FFE8E8;
-    transform: translateY(-30px);
-    border-radius: 50%;
+    animation: next-active .4s ease-in-out;
+    animation-fill-mode: forwards;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 0px 0px 10px #FFE8E8 ;
+    border-radius: 50%;
+
+}
+
+@keyframes next-active {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-30px);
+        box-shadow: 0px 0px 0px 15px #FFE8E8;
+    }
 }

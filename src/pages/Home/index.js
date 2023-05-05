@@ -60,10 +60,10 @@ const Home = () => {
 
           <div className={cx('d-flex w-100 mb-3 justify-content-evenly')}>
             <div className={cx('horoscope', 'w-50 d-flex justify-content-center')}>
-              <img src={getZodiacSign(user?.dobMale) ?? kim_nguu} alt='' ></img>
+              <img src={getZodiacSign(user?.dobMale) ?? kim_nguu} alt='' width={54} height={59}></img>
             </div>
             <div className={cx('horoscope', 'w-50 d-flex justify-content-center')}>
-              <img src={getZodiacSign(user?.dobFemale) ?? song_ngu} alt='' ></img>
+              <img src={getZodiacSign(user?.dobFemale) ?? song_ngu} alt='' width={54} height={59}></img>
             </div>
           </div>
 
