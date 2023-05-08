@@ -187,7 +187,7 @@ input[type="range"]::-ms-fill-upper {
 
 //Animation 
 .active-text-register {
-    animation: text-register-active 1s ease-in-out;
+    animation: text-register-active .6s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
     bottom: 16px;
@@ -205,7 +205,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .nonactive-text-register {
-    animation: text-register-nonactive 1s ease-in-out;
+    animation: text-register-nonactive .6s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
     bottom: calc(100% - 205px);
@@ -225,7 +225,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .active-footer {
-    animation: footer-active 1s ease-in-out;
+    animation: footer-active .6s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -241,7 +241,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .nonactive-footer {
-    animation: footer-nonactive 1s ease-in-out;
+    animation: footer-nonactive .6s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -259,7 +259,7 @@ input[type="range"]::-ms-fill-upper {
 
 .active-text-login {
     position: absolute;
-    animation: text-login-active 1s ease-in-out;
+    animation: text-login-active .6s ease-in-out;
     animation-fill-mode: forwards;
     font-size: 30px;
     line-height: 28px;
@@ -286,7 +286,7 @@ input[type="range"]::-ms-fill-upper {
     line-height: 40px;
     color: rgb(225 143 143);
     position: absolute;
-    animation: text-login-nonactive 1s ease-in-out;
+    animation: text-login-nonactive .6s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -309,7 +309,7 @@ input[type="range"]::-ms-fill-upper {
     background-color: rgb(255, 255, 255, 0.4);
     box-shadow: 0px -1px 0px 0px white;
     border-radius: 20px;
-    animation: form-register-active 1s ease-in-out;
+    animation: form-register-active .6s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
     top: 125px;
@@ -337,7 +337,7 @@ input[type="range"]::-ms-fill-upper {
     border-radius: 100px;
     background-color: rgb(255, 255, 255, 0.4);
     box-shadow: 0px -1px 0px 0px white;
-    animation: form-login-active 1s ease-in-out;
+    animation: form-login-active .6s ease-in-out;
     animation-fill-mode: forwards;
     position: absolute;
 }
@@ -360,7 +360,7 @@ input[type="range"]::-ms-fill-upper {
 
 .login_background {
     background-image: url('../../assets/images/background_register.png');
-    animation: active_background_login 1s ease-in-out;
+    animation: active_background_login .6s ease-in-out;
     background-position: center;
     background-repeat: no-repeat;
     animation-fill-mode: forwards;
@@ -385,7 +385,7 @@ input[type="range"]::-ms-fill-upper {
 
 .register_background {
     background-image: url('../../assets/images/background_login.png');
-    animation: active_background_register 1s ease-in-out;
+    animation: active_background_register .6s ease-in-out;
     background-position: center;
     background-repeat: no-repeat;
     animation-fill-mode: forwards;
@@ -409,7 +409,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .active-form {
-    animation: form_active 1s ease-in-out;
+    animation: form_active .6s ease-in-out;
     animation-fill-mode: forwards;
 }
 
@@ -424,7 +424,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .nonactive-form {
-    animation: form_nonactive 1s ease-in-out;
+    animation: form_nonactive .6s ease-in-out;
     animation-fill-mode: forwards;
 }
 

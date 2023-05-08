@@ -15,7 +15,6 @@ import successGif from '../../assets/images/done.gif'
 const cx = classNames.bind(styles)
 const Auth = () => {
     const { state } = useLocation();
-    console.log({ state })
     const { loginUser, authState } = useContext(AuthContext)
     const [isLogin, setIsLogin] = useState(false);
     const { register, handleSubmit, reset } = useForm();
@@ -172,6 +171,7 @@ const Auth = () => {
     if (authState.isAuthenticated) {
         return <Navigate to='/home' replace={true} />
     }
+  
     return (
         <>
             {(authState.authLoading) && <Loader />}

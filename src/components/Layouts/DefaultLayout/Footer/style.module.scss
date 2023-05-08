@@ -18,26 +18,97 @@
 
 }
 
+.wrapper ul {
+    display: flex;
+    width: 350px;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .active-item {
+    // width: 70px;
+    // height: 70px;
+    // background-color: white;
+    // animation: next-active .4s ease-in-out;
+    // animation-fill-mode: forwards;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // border-radius: 50%;
+    transform: translateY(-40px);
+    transition: .5s;
+}
+
+.indicator {
+    position: absolute;
+    top: -50%;
     width: 70px;
     height: 70px;
     background-color: white;
-    animation: next-active .4s ease-in-out;
-    animation-fill-mode: forwards;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
-
+    transition: 0.5s;
+    box-shadow: inset 0px -20px 20px 0px #FFE8E8;
 }
 
-@keyframes next-active {
-    from {
-        transform: translateY(0px);
-    }
+// .indicator::before {
+//     content: '';
+//     position: absolute;
+//     top: 50%;
+//     left: -22px;
+//     width: 20px;
+//     height: 20px;
+//     background: transparent;
+//     border-top-right-radius: 20px;
+//     box-shadow: 0px -10px 0 0 #FFE8E8;
+// }
 
-    to {
-        transform: translateY(-30px);
-        box-shadow: 0px 0px 0px 15px #FFE8E8;
-    }
+// .indicator::after {
+//     content: '';
+//     position: absolute;
+//     top: 50%;
+//     right: -22px;
+//     width: 20px;
+//     height: 20px;
+//     background: transparent;
+//     border-top-left-radius: 20px;
+//     box-shadow: 0px -10px 0 0 #FFE8E8;
+// }
+
+.wrapper ul li:nth-child(1).active-item ~ .indicator {
+    transform: translateX(0);
 }
+
+.wrapper ul li:nth-child(3).active-item ~ .indicator {
+    transform: translateX(calc(70px*2));
+}
+
+.wrapper ul li:nth-child(5).active-item ~ .indicator {
+    transform: translateX(calc(70px*4));
+}
+
+// @keyframes next-active {
+//     from {
+//         transform: translateY(0px);
+//     }
+
+//     to {
+//         transform: translateY(-30px);
+//         border: 6px solid #FFE8E8;
+//         box-shadow: -1px -10px 0px 0px #FFE8E8;
+//     }
+// }
+// .active-item::after{
+//     background: transparent;
+// }
