@@ -51,7 +51,7 @@ function getZodiacSign(dateString) {
     } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
         return song_ngu;
     } else {
-        return 'Invalid date';
+        return null;
     }
 }
 export default getZodiacSign

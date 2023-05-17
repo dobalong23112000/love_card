@@ -18,6 +18,7 @@ import NotAuthApi from 'api/NotAuthApi'
 import Pause from 'components/Icons/Pause'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from 'components/Loading/Loader/Loader'
+import Loading from 'components/Loading'
 const cx = classNames.bind(style)
 const Card = () => {
     const { nickName } = useParams()
@@ -99,7 +100,7 @@ const Card = () => {
     }, [])
     return (
         <>
-            {isLoading ? <Loader /> : (<div className='d-flex justify-content-center' style={{ minHeight: "100vh", background: `url('${BRGIMG}')`, backgroundRepeat: "no-repeat", position: "relative", backgroundColor: "#FFE8E8", paddingBottom: "30px" }}>
+            {isLoading ? <Loading /> : (<div className='d-flex justify-content-center' style={{ minHeight: "100vh", background: `url('${BRGIMG}')`, backgroundRepeat: "no-repeat", position: "relative", backgroundColor: "#FFE8E8", paddingBottom: "30px" }}>
                 <div className={'wrapper'}>
                     <div className={cx('heart-count',`${isPlay ? "active-heart" : ""}`)}>
                         <img src={heart_count} alt='' width={250.47} height={212.99}></img>

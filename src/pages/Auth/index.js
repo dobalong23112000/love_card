@@ -174,7 +174,7 @@ const Auth = () => {
   
     return (
         <>
-            {(authState.authLoading) && <Loader />}
+            {(authState.authLoading) && <Loading />}
             {(loading) && <Loading />}
             <div className={`${cx('wrapper')} ${isLogin ? "login_background" : "register_background"}`}>
                 <div className={`${cx('login-text')} mt-5 ${isLogin ? "active-text-login" : "nonactive-text-login"}`} onClick={() => {
